@@ -3,6 +3,7 @@
         {
             "id": 1,
             "title": "Hello",
+            "author": "sly",
             "publisher": "World",
             "publish-date": "2021-07-14T10:51:57.514Z",
             "rating": 1,
@@ -11,6 +12,7 @@
         {
             "id": 1,
             "title": "asd",
+            "author": "fox",
             "publisher": "dfg",
             "publish-date": "2021-07-15T05:50:19.216Z",
             "rating": 2,
@@ -19,6 +21,7 @@
         {
             "id": 2,
             "title": "Hello",
+            "author": "slyfox",
             "publisher": "World",
             "publish-date": "2021-07-14T10:51:57.514Z",
             "rating": 0,
