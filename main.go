@@ -6,5 +6,5 @@ import (
 
 func main() {
 	app := app.GetInstance()
-	app.Run()
+	app.Run(":3000")
 }

@@ -10,14 +10,9 @@ import (
 	"gorm.io/gorm"
 )
 
-var GET string = "GET"
-var POST string = "POST"
-var PUT string = "PUT"
-var DELETE string = "DELETE"
-
 type App struct {
-	Router   *mux.Router
-	Database *gorm.DB
+	Router *mux.Router
+	DB     *gorm.DB
 }
 
 var Instance *App
@@ -29,22 +24,27 @@ func GetInstance() *App {
 	return Instance
 }
 
-func (a *App) Run() {
-	log.Fatal(http.ListenAndServe(":3000", a.Router))
+func (a *App) Run(addr string) {
+	log.Fatal(http.ListenAndServe(addr, a.Router))
 }
 
 func InitializeApp() *App {
 	res := &App{}
-	res.Database = db.GetDatabaseInstance()
+	res.DB = db.GetDatabaseInstance()
 	res.Router = mux.NewRouter()
-	res.AddRoute("/books", GET, api.GetAllBooks)
-	res.AddRoute("/books", POST, api.InsertOrUpdateBook)
-	res.AddRoute("/books", DELETE, api.DeleteBook)
+	res.AddRoute("/books", http.MethodGet, api.List)
+	res.AddRoute("/books", http.MethodPost, api.Insert)
+	res.AddRoute("/books", http.MethodDelete, api.DeleteAll)
+	res.AddRoute("/books/{id:[0-9]+}", http.MethodGet, api.ListOne)
+	res.AddRoute("/books/{id:[0-9]+}", http.MethodDelete, api.Delete)
+	res.AddRoute("/books/{id:[0-9]+}", http.MethodPut, api.Update)
+	res.AddRoute("/books/{id:[0-9]+}/checkout", http.MethodPut, api.CheckOut)
+	res.AddRoute("/books/{id:[0-9]+}/checkin", http.MethodPut, api.CheckIn)
 	return res
 }
 
 func (app *App) AddRoute(path string, reqType string, fn api.RequestFunction) {
-	handlerFunc := GetHandlerFunctionFromApiFunction(fn, app.Database)
+	handlerFunc := GetHandlerFunctionFromApiFunction(fn, app.DB)
 	app.Router.HandleFunc(path, handlerFunc).Methods(reqType)
 }
 
@@ -52,7 +52,7 @@ func GetHandlerFunctionFromApiFunction(fn api.RequestFunction, db *gorm.DB) http
 	return func(w http.ResponseWriter, r *http.Request) {
 		fn(
 			&api.Ctx{
-				Database:       db,
+				DB:       db,
 				Request:        r,
 				ResponseWriter: w,
 			},

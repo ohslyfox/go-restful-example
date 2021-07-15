@@ -9,7 +9,7 @@ import (
 
 type RequestFunction func(ctx *Ctx)
 type Ctx struct {
-	Database       *gorm.DB
+	DB       *gorm.DB
 	Request        *http.Request
 	ResponseWriter http.ResponseWriter
 }

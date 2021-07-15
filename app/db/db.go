@@ -6,14 +6,17 @@ import (
 )
 
 func GetDatabaseInstance() *gorm.DB {
-	db, err := gorm.Open(sqlite.Open("bookdb.db"), &gorm.Config{})
+	//dsn := "host=127.0.0.1 user=postgres password=password dbname=postgres port=5432 sslmode=disable"
+	
+	// sqlDB, err := sql.Open("postgres", dsn)
+	// db, err := gorm.Open(postgres.New(postgres.Config{
+	//   Conn: sqlDB,
+	// }), &gorm.Config{})
+
+	db, err := gorm.Open(sqlite.Open("database.db"), &gorm.Config{})
 	if err != nil {
-		panic("Failed to open a sqlite db.")
+		panic("Failed to open database connection.")
 	}
 	db.AutoMigrate(&Book{})
 	return db
-}
-
-func DeleteAllData(db *gorm.DB) {
-	db.Exec("DELETE FROM books")
 }

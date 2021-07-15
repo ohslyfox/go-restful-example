@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "Hello",
+            "publisher": "World",
+            "publish-date": "2021-07-14T10:51:57.514Z",
+            "rating": 1,
+            "status": true
+        },
+        {
+            "id": 1,
+            "title": "asd",
+            "publisher": "dfg",
+            "publish-date": "2021-07-15T05:50:19.216Z",
+            "rating": 2,
+            "status": false
+        },
+        {
+            "id": 2,
+            "title": "Hello",
+            "publisher": "World",
+            "publish-date": "2021-07-14T10:51:57.514Z",
+            "rating": 0,
+            "status": true
+        }
+    ]
+}
