@@ -13,14 +13,21 @@ With docker running:
 - exec `go test ./...`
 
 ## Endpoints
-`GET /books` returns a JSON array of all the books
-`POST /books data: JSON book schema` inserts a book with the given data
-`DELETE /books` deletes all the books
-`GET /books/{id}` returns a JSON object containing the book with the given id
-`DELETE /books/{id}` deletes the book with the given id
-`PUT /books/{id} data: JSON book schema` updates the book with the given id with the given book data
-`PUT /book/{id}/checkout` updates the status of the book with the given ID to false
-`PUT /book/{id}/checkin` updates the status of the book with given ID to true
+- `GET /books` returns a JSON array of all the books
+
+- `POST /books data: JSON book schema` inserts a book with the given data
+
+- `DELETE /books` deletes all the books
+
+- `GET /books/{id}` returns a JSON object containing the book with the given id
+
+- `DELETE /books/{id}` deletes the book with the given id
+
+- `PUT /books/{id} data: JSON book schema` updates the book with the given id with the given book data
+
+- `PUT /book/{id}/checkout` updates the status of the book with the given ID to false
+
+- `PUT /book/{id}/checkin` updates the status of the book with given ID to true
 
 ## Things we could improve on
 - This application is currently lacking authentication.
