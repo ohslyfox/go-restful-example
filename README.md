@@ -30,8 +30,10 @@ With docker running:
 - Our api package has defined CRUD methods that are only compatible with one database table. To scale this app in the future, we may want to abstract our api model to support more objects.
 - We're lacking an app configuration, a more permanent solution would be preferred to scale the app. This could impact things like db connection strings and overall reduce hardcoded configuration-based literals
 - We're using a sqlite database for storage. We might want a more permanent solution for scale. For example, we could containerize postgresql with docker-compose
+  - this would also provide an opportunity to write meaningful unit tests for the database
 - There's quite a bit of code redundancy in our api-handler code and test code
 - Our error messages could be much more helpful. For example, sending a POST request with no data simply returns "EOF"
+- Our unit tests could be expanded to test more functionality rather than just status codes
 - Docker file could be updated to fetch from remote repo
 
 ## Notes
