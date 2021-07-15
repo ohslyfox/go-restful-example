@@ -23,7 +23,7 @@ func TestApi(t *testing.T) {
 	t.Run("delete-all", func(t *testing.T) {
 		ErrorNotEqual(t, DeleteAll(), 204)
 	})
-	t.Run("is-db-empty", func(t *testing.T) {
+	t.Run("is-response-empty", func(t *testing.T) {
 		actual := IsGetResponseEmpty()
 		if !actual {
 			t.Errorf("Response is not empty")
