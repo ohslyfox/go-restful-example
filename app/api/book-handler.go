@@ -37,7 +37,6 @@ func Insert(ctx *Ctx) {
 
 	decoder := json.NewDecoder(ctx.Request.Body)
 	err := decoder.Decode(&book)
-	defer ctx.Request.Body.Close()
 
 	if err != nil {
 		respondError(ctx.ResponseWriter, http.StatusBadRequest, err.Error())
@@ -71,7 +70,6 @@ func Update(ctx *Ctx) {
 
 	decoder := json.NewDecoder(ctx.Request.Body)
 	err = decoder.Decode(&book)
-	defer ctx.Request.Body.Close()
 
 	if err != nil {
 		respondError(ctx.ResponseWriter, http.StatusBadRequest, err.Error())

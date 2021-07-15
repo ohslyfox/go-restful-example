@@ -102,7 +102,6 @@ func IsGetResponseEmpty() bool {
 	if err != nil {
 		return false
 	}
-	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
@@ -121,7 +120,6 @@ func ListAll() int {
 	if resp != nil {
 		res = resp.StatusCode
 	}
-	defer resp.Body.Close()
 	return res
 }
 
@@ -131,7 +129,6 @@ func ListOne(id int) int {
 	if resp != nil {
 		res = resp.StatusCode
 	}
-	defer resp.Body.Close()
 	return res
 }
 
@@ -147,7 +144,6 @@ func InsertDataItem(idx int) int {
 	if resp != nil {
 		res = resp.StatusCode
 	}
-	defer resp.Body.Close()
 	return res
 }
 
@@ -165,7 +161,6 @@ func UpdateItem(findId int, dataIdx int) int {
 	if req != nil {
 		res = resp.StatusCode
 	}
-	defer resp.Body.Close()
 	return res
 }
 
@@ -177,7 +172,6 @@ func DeleteAll() int {
 	if resp != nil {
 		res = resp.StatusCode
 	}
-	defer resp.Body.Close()
 	return res
 }
 
@@ -189,7 +183,6 @@ func DeleteOne(idx int) int {
 	if resp != nil {
 		res = resp.StatusCode
 	}
-	defer resp.Body.Close()
 	return res
 }
 
@@ -201,6 +194,5 @@ func CheckInOut(idx int, checkInOrOut string) int {
 	if resp != nil {
 		res = resp.StatusCode
 	}
-	defer resp.Body.Close()
 	return res
 }
